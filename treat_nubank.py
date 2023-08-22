@@ -25,6 +25,7 @@ print(credcard.columns)
 transactions = pd.concat([credcard, nuconta], ignore_index=True)
 transactions['date'] = pd.to_datetime(transactions['date']).dt.date
 transactions = transactions.sort_values('date', ascending=False)
+transactions.to_excel('transactions.xlsx', index=False)
 
 wks = gc.open_by_key('YOUR_SPREADSHEET_KEY') # You should replace this string with generated spreadsheet key.
 worksheet = wks.worksheet('transactions')
